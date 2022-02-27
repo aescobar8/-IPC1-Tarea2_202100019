@@ -133,7 +133,7 @@ public class Login extends javax.swing.JFrame {
         }
         else{
             if(usuario.equals(user) && contrasena.equals(pass)){
-                JOptionPane.showMessageDialog(null, "¡Bienvenido(a)  " + usuario.toUpperCase() + "!");
+                JOptionPane.showMessageDialog(null, "¡Bienvenido(a) " + usuario.toUpperCase() + "!");
                 panel_control pc = new panel_control();
                 pc.setVisible(true);
                 this.dispose();
