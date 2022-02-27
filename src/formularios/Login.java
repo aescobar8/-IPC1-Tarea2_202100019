@@ -5,6 +5,9 @@
 package formularios;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -22,6 +25,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../images/usac negro.png")).getImage());
+        jPasswordField1.setEchoChar('♦');
     }
 
     /**
@@ -67,6 +71,11 @@ public class Login extends javax.swing.JFrame {
         });
 
         jButton2.setText("Salir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -117,13 +126,53 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        // TODO add your handling code here:
+        String usuario = jTextField1.getText().toLowerCase();
+        String contrasena = new String(jPasswordField1.getPassword());
+        
+        jPasswordField1.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    if(usuario.isEmpty()){
+                        JOptionPane.showMessageDialog(null, "POR FAVOR INGRESA TU NOMBRE DE USUARIO");
+                    }
+                    else if(contrasena.isEmpty()){
+                        JOptionPane.showMessageDialog(null, "POR FAVOR INGRESA TU CONTRASEÑA");
+                    }
+                    else{
+                        if(usuario.equals(user) && contrasena.equals(pass)){
+                            JOptionPane.showMessageDialog(null, "¡Bienvenido(a) " + usuario.toUpperCase() + "!");
+                            panel_control pc = new panel_control();
+                            pc.setVisible(true);
+                            jPanel2.setVisible(false);
+                        }
+                        else if(usuario != user){
+                            JOptionPane.showMessageDialog(null, "NOMBRE DE USUARIO INCORRECTO");
+                        }
+                        else if(contrasena != pass){
+                            JOptionPane.showMessageDialog(null, "CONTRASEÑA INCORRECTA");
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                
+            }
+        });
+        
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String usuario = jTextField1.getText().toLowerCase();
-        String contrasena = jPasswordField1.getText();
+        String contrasena = new String(jPasswordField1.getPassword());
         
         if(usuario.isEmpty()){
             JOptionPane.showMessageDialog(null, "POR FAVOR INGRESA TU NOMBRE DE USUARIO");
@@ -142,10 +191,15 @@ public class Login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "NOMBRE DE USUARIO INCORRECTO");
             }
             else if(contrasena != pass){
-                JOptionPane.showMessageDialog(null, "NOMBRE DE USUARIO INCORRECTO");
+                JOptionPane.showMessageDialog(null, "CONTRASEÑA INCORRECTA");
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
