@@ -6,13 +6,16 @@ package formularios;
 
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author ramos
  */
 public class Login extends javax.swing.JFrame {
-
+    
+    String user = "angela";
+    String pass = "202100019";
     /**
      * Creates new form Login
      */
@@ -119,8 +122,29 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        panel_control pc = new panel_control();
-        pc.setVisible(true);
+        String usuario = jTextField1.getText().toLowerCase();
+        String contrasena = jPasswordField1.getText();
+        
+        if(usuario.isEmpty()){
+            JOptionPane.showMessageDialog(null, "POR FAVOR INGRESA TU NOMBRE DE USUARIO");
+        }
+        else if(contrasena.isEmpty()){
+            JOptionPane.showMessageDialog(null, "POR FAVOR INGRESA TU CONTRASEÑA");
+        }
+        else{
+            if(usuario.equals(user) && contrasena.equals(pass)){
+                JOptionPane.showMessageDialog(null, "¡Bienvenido(a)  " + usuario.toUpperCase() + "!");
+                panel_control pc = new panel_control();
+                pc.setVisible(true);
+                this.dispose();
+            }
+            else if(usuario != user){
+                JOptionPane.showMessageDialog(null, "NOMBRE DE USUARIO INCORRECTO");
+            }
+            else if(contrasena != pass){
+                JOptionPane.showMessageDialog(null, "NOMBRE DE USUARIO INCORRECTO");
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
