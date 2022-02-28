@@ -24,7 +24,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../images/usac negro.png")).getImage());
+        //setIconImage(new ImageIcon(getClass().getResource("../images/usac.png")).getImage());
         jPasswordField1.setEchoChar('♦');
     }
 

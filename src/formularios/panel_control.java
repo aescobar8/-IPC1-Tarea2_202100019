@@ -18,7 +18,7 @@ public class panel_control extends javax.swing.JFrame {
      */
     public panel_control() {
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../images/usac negro.png")).getImage());
+        //setIconImage(new ImageIcon(getClass().getResource("../images/usac.png")).getImage());
     }
 
     /**
